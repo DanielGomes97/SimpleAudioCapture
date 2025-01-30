@@ -1,10 +1,10 @@
-program CyrusSoftGravador;
+program CyrusSoft_Recorder;
 
 uses
   System.StartUpCopy,
   FMX.Forms,
-  uPrincipal in 'View\uPrincipal.pas' {FrmPrincipal},
-  uAudioCapture in 'Model\uAudioCapture.pas';
+  View.Main in 'View\View.Main.pas' {FrmPrincipal},
+  Model.AudioCapture in 'Model\Model.AudioCapture.pas';
 
 {$R *.res}
 

@@ -61,7 +61,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.Size = 18.000000000000000000
             TextSettings.FontColor = claWhite
             TextSettings.HorzAlign = Center
-            Text = 'Iniciar grava'#231#227'o'
+            Text = 'Start recording'
             TabOrder = 0
           end
         end
@@ -88,7 +88,7 @@ object FrmPrincipal: TFrmPrincipal
             TextSettings.Font.Size = 16.000000000000000000
             TextSettings.FontColor = claWhite
             TextSettings.HorzAlign = Center
-            Text = 'CurysSoft Gravador'
+            Text = 'CurysSoft Recorder'
             TabOrder = 0
           end
         end

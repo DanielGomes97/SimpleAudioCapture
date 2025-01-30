@@ -7,6 +7,8 @@ static/
 **/Win32/
 **/Win64/
 **/Linux64/
+**/Android/
+**/Android64/
 
 # Delphi history and backups
 **/__history/
