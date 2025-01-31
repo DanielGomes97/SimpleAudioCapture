@@ -102,7 +102,7 @@ begin
     BtnRecording.Fill.Color := $FF166DB4;
     AudioCapture.FMicroAtivo := False;
     AudioCapture.FAudioAtivo := False;
-    ReportMemoryLeaksOnShutdown := True;
+    //ReportMemoryLeaksOnShutdown := True;
 end;
 
 procedure TFrmViewMain.FormDestroy(Sender: TObject);
