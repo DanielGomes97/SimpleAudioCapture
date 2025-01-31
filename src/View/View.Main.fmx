@@ -1,7 +1,7 @@
-object FrmPrincipal: TFrmPrincipal
+object FrmViewMain: TFrmViewMain
   Left = 0
   Top = 0
-  Caption = 'Gravador'
+  Caption = 'Recorder'
   ClientHeight = 777
   ClientWidth = 437
   Position = DesktopCenter
@@ -11,9 +11,9 @@ object FrmPrincipal: TFrmPrincipal
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   DesignerMasterStyle = 3
-  object TimerSegundo: TTimer
+  object TimeUpdatesInseconds: TTimer
     Enabled = False
-    OnTimer = TimerSegundoTimer
+    OnTimer = TimeUpdatesInsecondsTimer
     Left = 128
     Top = 348
   end
@@ -36,7 +36,7 @@ object FrmPrincipal: TFrmPrincipal
         Size.Height = 97.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 4
-        object BtnGravar: TRectangle
+        object BtnRecording: TRectangle
           Align = Client
           Cursor = crHandPoint
           Fill.Color = xFF166DB4
@@ -50,8 +50,8 @@ object FrmPrincipal: TFrmPrincipal
           Stroke.Kind = None
           XRadius = 10.000000000000000000
           YRadius = 10.000000000000000000
-          OnClick = BtnGravarClick
-          object Label1: TLabel
+          OnClick = BtnRecordingClick
+          object LblNameButtonStart: TLabel
             Align = Client
             StyledSettings = [Family, Style]
             Locked = True
@@ -79,7 +79,7 @@ object FrmPrincipal: TFrmPrincipal
           Size.Height = 70.000000000000000000
           Size.PlatformDefault = False
           Stroke.Kind = None
-          object LblTitulo: TLabel
+          object LblTitle: TLabel
             Align = Client
             StyledSettings = [Family, Style]
             Size.Width = 437.000000000000000000
@@ -123,7 +123,7 @@ object FrmPrincipal: TFrmPrincipal
             Text = 'Cyrussoft.com.br'
             TabOrder = 1
           end
-          object LblCaminho: TLabel
+          object LblOriginPath: TLabel
             Align = Bottom
             StyledSettings = [Family]
             Position.Y = 70.000000000000000000
@@ -137,7 +137,7 @@ object FrmPrincipal: TFrmPrincipal
             Text = 'Nome arquivo: Data: 04-12-2024-13-48'
             TabOrder = 2
           end
-          object LblNumero: TLabel
+          object LblCount: TLabel
             Align = Client
             StyledSettings = [Family]
             Size.Width = 417.000000000000000000
@@ -153,9 +153,5 @@ object FrmPrincipal: TFrmPrincipal
         end
       end
     end
-  end
-  object TimerReset: TTimer
-    Left = 296
-    Top = 332
   end
 end

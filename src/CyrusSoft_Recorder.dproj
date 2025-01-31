@@ -4,7 +4,7 @@
         <ProjectVersion>19.5</ProjectVersion>
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>693267</TargetedPlatforms>
         <AppType>Application</AppType>
@@ -298,10 +298,11 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="View\View.Main.pas">
-            <Form>FrmPrincipal</Form>
+            <Form>FrmViewMain</Form>
             <FormType>fmx</FormType>
         </DCCReference>
         <DCCReference Include="Model\Model.AudioCapture.pas"/>
+        <DCCReference Include="Model\Model.PermissionsUser.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -751,7 +752,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Android\Release\agendagr.classes" Configuration="Release" Class="AndroidClasses">
+                <DeployFile LocalName="Android\Release\CyrusSoft_Recorder.classes" Configuration="Release" Class="AndroidClasses">
                     <Platform Name="Android">
                         <Operation>64</Operation>
                         <Overwrite>true</Overwrite>

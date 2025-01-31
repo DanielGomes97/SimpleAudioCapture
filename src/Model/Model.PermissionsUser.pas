@@ -14,7 +14,6 @@ type
   TPermissoesUser = class
 
   public
-      //{$IFDEF ANDROID}  {$ENDIF}
       {$IFDEF ANDROID}
       procedure HandleActivityMessage(const Sender: TObject; const M: TMessage);
       procedure onRequestPermissionsResult(aData: TPermissionsRequestResultData);
