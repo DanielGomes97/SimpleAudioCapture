@@ -8,7 +8,7 @@ uses
   FMX.StdCtrls, System.DateUtils, FMX.Platform, FMX.Layouts,
   System.Threading, FMX.Media, FMX.Objects, FMX.Edit, FMX.Effects,
   System.Actions, FMX.ActnList, FMX.Graphics, FMX.Ani, System.netEncoding,
-  System.IOUtils, Model.AudioCapture;
+  System.IOUtils, Model.AudioCapture, FMX.ListBox, System.Skia, FMX.Skia;
 
 type
   TFrmViewMain = class(TForm)
@@ -18,21 +18,53 @@ type
     Layout3: TLayout;
     Layout4: TLayout;
     LblNameButtonStart: TLabel;
-    TimeUpdatesInseconds: TTimer;
+    TimerUpdatesInseconds: TTimer;
     Rectangle2: TRectangle;
     LblTitle: TLabel;
     LblStatus: TLabel;
     LblOriginPath: TLabel;
     LblCount: TLabel;
     Layout1: TLayout;
+    Layout5: TLayout;
+    Layout6: TLayout;
+    Layout7: TLayout;
+    Label1: TLabel;
+    SpeedButton1: TSpeedButton;
+    LstListAudio: TListBox;
+    LytMenuAudio: TLayout;
+    Rectangle1: TRectangle;
+    Rectangle3: TRectangle;
+    Layout9: TLayout;
+    Layout10: TLayout;
+    Layout11: TLayout;
+    Layout12: TLayout;
+    SkLabel1: TSkLabel;
+    SpeedButton2: TSpeedButton;
+    Layout13: TLayout;
+    Layout14: TLayout;
+    Layout15: TLayout;
+    Layout16: TLayout;
+    Layout17: TLayout;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
+    Layout18: TLayout;
+    Rectangle4: TRectangle;
+    Rectangle5: TRectangle;
+    Layout19: TLayout;
+    SKTimeAudio: TSkLabel;
+    SKTimeAudioCurrent: TSkLabel;
+    TimerUpdatedraft: TTimer;
     procedure FormCreate(Sender: TObject);
-    procedure TimeUpdatesInsecondsTimer(Sender: TObject);
+    procedure TimerUpdatesInsecondsTimer(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BtnRecordingClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
 
   private
     procedure Iniciar;
     procedure Parar;
+    procedure ListAudioFiles(Title, Timer: String);
     { Private declarations }
   public
     { Public declarations }
@@ -46,6 +78,8 @@ implementation
 
 {$R *.fmx}
 
+uses View.Frame.ListAudio;
+
 procedure TFrmViewMain.Parar;
 begin
     AudioCapture.StopRecording;
@@ -55,8 +89,16 @@ begin
     LblStatus.Text := 'stopped';
     LblOriginPath.Text:= 'Saved in: ' + AudioCapture.FileAudio;
     LblCount.Text := '00:00';
-    TimeUpdatesInseconds.Enabled := False;
+    TimerUpdatesInseconds.Enabled := False;
     AudioCapture.FSeconds := 0;
+end;
+
+procedure TFrmViewMain.SpeedButton1Click(Sender: TObject);
+begin
+    ListAudioFiles('Musica do Dia', '05:30');
+    ListAudioFiles('Musica da Noite', '04:42');
+    ListAudioFiles('Musica da Tarde', '03:09');
+    ListAudioFiles('Musica da Madrugada', '10:50');
 end;
 
 procedure TFrmViewMain.Iniciar;
@@ -68,7 +110,7 @@ begin
     LblStatus.Text := 'recording audio...';
     LblOriginPath.Text:= 'Saving to: ' + AudioCapture.FileAudio;
     LblCount.Text := '00:00';
-    TimeUpdatesInseconds.Enabled := True;
+    TimerUpdatesInseconds.Enabled := True;
 end;
 
 procedure TFrmViewMain.BtnRecordingClick(Sender: TObject);
@@ -118,10 +160,36 @@ begin
     AudioCapture.Free;
 end;
 
-procedure TFrmViewMain.TimeUpdatesInsecondsTimer(Sender: TObject);
+procedure TFrmViewMain.TimerUpdatesInsecondsTimer(Sender: TObject);
 begin
     Inc(AudioCapture.FSeconds);
     LblCount.Text := Format('%.2d:%.2d', [AudioCapture.FSeconds div 60, AudioCapture.FSeconds mod 60]); // update: time MM:SS
+end;
+
+//
+procedure TFrmViewMain.ListAudioFiles(Title, Timer: String);
+var
+  Item: TListBoxItem;
+  Frame: TFrameListAudio;
+begin
+    Item := TListBoxItem.Create(nil);
+    Item.Text           := '';
+    Item.Height         := 40;
+    Item.Margins.Left   := 0;
+    Item.Margins.Right  := 0;
+    Item.Margins.Bottom := 10;
+    Item.Margins.Top    := 0;
+    //Item.Tag            := Codigo;
+    //Item.TagString      := Descricao;
+    Item.Selectable     := False;
+    Frame                         := TFrameListAudio.Create(Item); //
+    Frame.Parent                  := Item;
+    Frame.SkLblTitle.Text         := Title;
+    Frame.SkLblTimer.Text         := Timer;
+    //Frame.BtnOpcaoLista.Tag       := Codigo;
+    //Frame.BtnOpcaoLista.OnClick   := ClickMenuOpcao;
+    Frame.Align                   := TAlignLayout.Client;
+    LstListAudio.AddObject(Item);
 end;
 
 end.

@@ -1,0 +1,83 @@
+object FrameListAudio: TFrameListAudio
+  Size.Width = 450.000000000000000000
+  Size.Height = 40.000000000000000000
+  Size.PlatformDefault = False
+  object Layout1: TLayout
+    Align = Client
+    Margins.Top = 5.000000000000000000
+    Margins.Bottom = 5.000000000000000000
+    Size.Width = 450.000000000000000000
+    Size.Height = 30.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Layout2: TLayout
+      Align = Right
+      Margins.Right = 7.000000000000000000
+      Position.X = 363.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object BtnTrashAudio: TSpeedButton
+        Align = Client
+        Cursor = crHandPoint
+        Size.Width = 40.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'trashtoolbuttonbordered'
+        Text = 'BtnTrashAudio'
+      end
+    end
+    object Layout3: TLayout
+      Align = Client
+      Size.Width = 363.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object SkLblTitle: TSkLabel
+        Align = Client
+        Size.Width = 313.029998779296900000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family, Style, FontColor]
+        TextSettings.Font.Size = 16.000000000000000000
+        Words = <
+          item
+            Text = 'SkLblTitle'
+          end>
+      end
+      object SkLblTimer: TSkLabel
+        Align = Right
+        Margins.Left = 2.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Position.X = 315.029998779296900000
+        Size.Width = 37.970001220703130000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family, Style, FontColor]
+        TextSettings.Font.Size = 16.000000000000000000
+        Words = <
+          item
+            Text = '50:30'
+          end>
+      end
+    end
+    object Layout4: TLayout
+      Align = Right
+      Position.X = 410.000000000000000000
+      Size.Width = 40.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object BtnPlayAudio: TSpeedButton
+        Align = Client
+        Cursor = crHandPoint
+        Size.Width = 40.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        StyleLookup = 'playtoolbutton'
+        Text = 'SpeedButton1'
+      end
+    end
+  end
+end

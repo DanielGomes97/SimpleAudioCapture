@@ -10,12 +10,12 @@ object FrmViewMain: TFrmViewMain
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  DesignerMasterStyle = 3
-  object TimeUpdatesInseconds: TTimer
+  DesignerMasterStyle = 0
+  object TimerUpdatesInseconds: TTimer
     Enabled = False
-    OnTimer = TimeUpdatesInsecondsTimer
-    Left = 128
-    Top = 348
+    OnTimer = TimerUpdatesInsecondsTimer
+    Left = 120
+    Top = 316
   end
   object Layout1: TLayout
     Align = Client
@@ -134,7 +134,7 @@ object FrmViewMain: TFrmViewMain
             TextSettings.Font.StyleExt = {04040000000200000004000000}
             TextSettings.FontColor = xFF252222
             TextSettings.HorzAlign = Center
-            Text = 'Nome arquivo: Data: 04-12-2024-13-48'
+            Text = 'File'
             TabOrder = 2
           end
           object LblCount: TLabel
@@ -151,7 +151,281 @@ object FrmViewMain: TFrmViewMain
             TabOrder = 0
           end
         end
+        object Layout5: TLayout
+          Align = Client
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Size.Width = 417.000000000000000000
+          Size.Height = 445.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          object Layout6: TLayout
+            Align = Top
+            Margins.Bottom = 5.000000000000000000
+            Size.Width = 417.000000000000000000
+            Size.Height = 48.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object Label1: TLabel
+              Align = Client
+              StyledSettings = [Family]
+              Size.Width = 373.000000000000000000
+              Size.Height = 48.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.Font.Size = 16.000000000000000000
+              TextSettings.Font.StyleExt = {00070000000000000004000000}
+              TextSettings.FontColor = xFF404040
+              Text = 'Lista'
+              TabOrder = 0
+            end
+            object SpeedButton1: TSpeedButton
+              Align = Right
+              Position.X = 373.000000000000000000
+              Size.Width = 44.000000000000000000
+              Size.Height = 48.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'refreshtoolbutton'
+              Text = 'SpeedButton1'
+              OnClick = SpeedButton1Click
+            end
+          end
+          object Layout7: TLayout
+            Align = Client
+            Size.Width = 417.000000000000000000
+            Size.Height = 392.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object LstListAudio: TListBox
+              Align = Client
+              Size.Width = 417.000000000000000000
+              Size.Height = 392.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'transparentlistboxstyle'
+              TabOrder = 0
+              DisableFocusEffect = True
+              DefaultItemStyles.ItemStyle = ''
+              DefaultItemStyles.GroupHeaderStyle = ''
+              DefaultItemStyles.GroupFooterStyle = ''
+              Viewport.Width = 417.000000000000000000
+              Viewport.Height = 392.000000000000000000
+            end
+          end
+        end
       end
     end
+    object LytMenuAudio: TLayout
+      Align = Client
+      Size.Width = 437.000000000000000000
+      Size.Height = 777.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      TabOrder = 1
+      object Rectangle1: TRectangle
+        Align = Client
+        Fill.Color = claBlack
+        Opacity = 0.500000000000000000
+        Size.Width = 437.000000000000000000
+        Size.Height = 777.000000000000000000
+        Size.PlatformDefault = False
+      end
+      object Rectangle3: TRectangle
+        Align = Client
+        Fill.Color = claWhite
+        Margins.Left = 10.000000000000000000
+        Margins.Top = 100.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 100.000000000000000000
+        Size.Width = 417.000000000000000000
+        Size.Height = 577.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 10.000000000000000000
+        YRadius = 10.000000000000000000
+        object Layout9: TLayout
+          Align = Top
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 10.000000000000000000
+          Size.Width = 397.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 0
+          object Layout12: TLayout
+            Align = Right
+            Position.X = 347.000000000000000000
+            TabOrder = 0
+            object SpeedButton2: TSpeedButton
+              Align = Client
+              Size.Width = 50.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              StyleLookup = 'cleareditbutton'
+              Text = 'SpeedButton2'
+            end
+          end
+          object SkLabel1: TSkLabel
+            Align = Client
+            Size.Width = 347.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            Words = <
+              item
+                Text = 'SkLabel1'
+              end>
+          end
+        end
+        object Layout10: TLayout
+          Align = Bottom
+          Margins.Left = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Position.X = 10.000000000000000000
+          Position.Y = 487.000000000000000000
+          Size.Width = 397.000000000000000000
+          Size.Height = 80.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 1
+          object Layout14: TLayout
+            Align = Client
+            Margins.Top = 15.000000000000000000
+            Margins.Bottom = 15.000000000000000000
+            Size.Width = 397.000000000000000000
+            Size.Height = 50.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            object Layout15: TLayout
+              Align = Left
+              Size.Width = 130.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 0
+              object SpeedButton4: TSpeedButton
+                Align = Client
+                Size.Width = 130.000000000000000000
+                Size.Height = 50.000000000000000000
+                Size.PlatformDefault = False
+                StyleLookup = 'actiontoolbutton'
+                Text = 'SpeedButton4'
+              end
+            end
+            object Layout16: TLayout
+              Align = Client
+              Size.Width = 137.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object SpeedButton3: TSpeedButton
+                Align = Client
+                Size.Width = 137.000000000000000000
+                Size.Height = 50.000000000000000000
+                Size.PlatformDefault = False
+                StyleLookup = 'pausetoolbutton'
+                Text = 'SpeedButton3'
+              end
+            end
+            object Layout17: TLayout
+              Align = Right
+              Position.X = 267.000000000000000000
+              Size.Width = 130.000000000000000000
+              Size.Height = 50.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 2
+              object SpeedButton5: TSpeedButton
+                Align = Client
+                Size.Width = 130.000000000000000000
+                Size.Height = 50.000000000000000000
+                Size.PlatformDefault = False
+                StyleLookup = 'playtoolbutton'
+                Text = 'SpeedButton5'
+              end
+            end
+          end
+        end
+        object Layout11: TLayout
+          Align = Client
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 5.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 5.000000000000000000
+          Size.Width = 397.000000000000000000
+          Size.Height = 417.000000000000000000
+          Size.PlatformDefault = False
+          TabOrder = 2
+          object Layout13: TLayout
+            Align = Top
+            Size.Width = 397.000000000000000000
+            Size.Height = 89.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+          end
+          object Layout18: TLayout
+            Align = Bottom
+            Position.Y = 357.000000000000000000
+            Size.Width = 397.000000000000000000
+            Size.Height = 60.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object Rectangle4: TRectangle
+              Align = Client
+              Margins.Bottom = 10.000000000000000000
+              Size.Width = 397.000000000000000000
+              Size.Height = 10.000000000000000000
+              Size.PlatformDefault = False
+              Stroke.Kind = None
+              XRadius = 5.000000000000000000
+              YRadius = 5.000000000000000000
+              object Rectangle5: TRectangle
+                Align = Left
+                Fill.Color = xFF2270EF
+                Size.Width = 113.000000000000000000
+                Size.Height = 10.000000000000000000
+                Size.PlatformDefault = False
+                Stroke.Kind = None
+                XRadius = 5.000000000000000000
+                YRadius = 5.000000000000000000
+              end
+            end
+            object Layout19: TLayout
+              Align = Top
+              Margins.Bottom = 10.000000000000000000
+              Size.Width = 397.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TabOrder = 1
+              object SKTimeAudio: TSkLabel
+                Align = Right
+                Position.X = 311.899993896484400000
+                Size.Width = 85.099998474121090000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                Words = <
+                  item
+                    Text = 'SKTimeAudio'
+                  end>
+              end
+              object SKTimeAudioCurrent: TSkLabel
+                Align = Client
+                Margins.Right = 10.000000000000000000
+                Size.Width = 301.899993896484400000
+                Size.Height = 30.000000000000000000
+                Size.PlatformDefault = False
+                Words = <
+                  item
+                    Text = 'SKTimeAudioCurrent'
+                  end>
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object TimerUpdatedraft: TTimer
+    Left = 208
+    Top = 376
   end
 end
