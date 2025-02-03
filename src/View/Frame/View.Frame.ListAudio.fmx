@@ -36,26 +36,25 @@ object FrameListAudio: TFrameListAudio
       TabOrder = 2
       object SkLblTitle: TSkLabel
         Align = Client
-        Size.Width = 313.029998779296900000
+        Size.Width = 317.779998779296900000
         Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
         StyledSettings = [Family, Style, FontColor]
         TextSettings.Font.Size = 16.000000000000000000
         Words = <
           item
-            Text = 'SkLblTitle'
+            Text = 'Title'
           end>
       end
       object SkLblTimer: TSkLabel
         Align = Right
         Margins.Left = 2.000000000000000000
         Margins.Right = 10.000000000000000000
-        Position.X = 315.029998779296900000
-        Size.Width = 37.970001220703130000
+        Position.X = 319.779998779296900000
+        Size.Width = 33.220001220703130000
         Size.Height = 30.000000000000000000
         Size.PlatformDefault = False
         StyledSettings = [Family, Style, FontColor]
-        TextSettings.Font.Size = 16.000000000000000000
         Words = <
           item
             Text = '50:30'

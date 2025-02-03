@@ -65,6 +65,8 @@ type
     procedure Iniciar;
     procedure Parar;
     procedure ListAudioFiles(Title, Timer: String);
+    procedure ClickMenuOptionTrash(Sender: TObject);
+    procedure ClickMenuOptionPlay(Sender: TObject);
     { Private declarations }
   public
     { Public declarations }
@@ -187,9 +189,20 @@ begin
     Frame.SkLblTitle.Text         := Title;
     Frame.SkLblTimer.Text         := Timer;
     //Frame.BtnOpcaoLista.Tag       := Codigo;
-    //Frame.BtnOpcaoLista.OnClick   := ClickMenuOpcao;
+    Frame.BtnTrashAudio.OnClick   := ClickMenuOptionTrash;
+    Frame.BtnPlayAudio.OnClick    := ClickMenuOptionPlay;
     Frame.Align                   := TAlignLayout.Client;
     LstListAudio.AddObject(Item);
+end;
+
+procedure TFrmViewMain.ClickMenuOptionTrash(Sender: TObject);
+begin
+    ShowMessage('Trash');
+end;
+
+procedure TFrmViewMain.ClickMenuOptionPlay(Sender: TObject);
+begin
+    ShowMessage('Play');
 end;
 
 end.
