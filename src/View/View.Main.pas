@@ -168,7 +168,6 @@ begin
     LblCount.Text := Format('%.2d:%.2d', [AudioCapture.FSeconds div 60, AudioCapture.FSeconds mod 60]); // update: time MM:SS
 end;
 
-//
 procedure TFrmViewMain.ListAudioFiles(Title, Timer: String);
 var
   Item: TListBoxItem;
@@ -198,11 +197,13 @@ end;
 procedure TFrmViewMain.ClickMenuOptionTrash(Sender: TObject);
 begin
     ShowMessage('Trash');
+
 end;
 
 procedure TFrmViewMain.ClickMenuOptionPlay(Sender: TObject);
 begin
     ShowMessage('Play');
+    AudioCapture.Play;
 end;
 
 end.

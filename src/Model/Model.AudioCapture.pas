@@ -131,18 +131,15 @@ end;
 function TAudioCapture.StopCapture : Boolean;
 begin
     result := false;
-    //try
-        if (IsMicrophoneRecording) then
-        begin
-             try
-                FMicrophone.StopCapture;
-                result := true;
-             except on E : Exception do
-                raise Exception.Create('Operation not supported by this device.' + sLineBreak + 'Message: ' + E.Message);
-             end;
+    if (IsMicrophoneRecording) then
+    begin
+        try
+           FMicrophone.StopCapture;
+           result := true;
+        except on E : Exception do
+           raise Exception.Create('Operation not supported by this device.' + sLineBreak + 'Message: ' + E.Message);
         end;
-    //except
-    //end;
+    end;
 end;
 
 function TAudioCapture.StopRecording: Boolean;
@@ -198,11 +195,7 @@ begin
     if (HasMicrophone) then
     begin
         FMicrophone.FileName := FFileName;
-        //try
-            Result := True;
-        //except on E : Exception do
-        //    Result := False;
-        //end;
+        Result := True;
     end
     else
        Result := False;
