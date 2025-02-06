@@ -171,7 +171,7 @@ object FrmViewMain: TFrmViewMain
             object Label1: TLabel
               Align = Client
               StyledSettings = [Family]
-              Size.Width = 373.000000000000000000
+              Size.Width = 369.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
               TextSettings.Font.Size = 16.000000000000000000
@@ -183,8 +183,8 @@ object FrmViewMain: TFrmViewMain
             object SpeedButton1: TSpeedButton
               Align = Right
               Cursor = crHandPoint
-              Position.X = 373.000000000000000000
-              Size.Width = 44.000000000000000000
+              Position.X = 369.000000000000000000
+              Size.Width = 48.000000000000000000
               Size.Height = 48.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'refreshtoolbutton'
@@ -211,6 +211,17 @@ object FrmViewMain: TFrmViewMain
               DefaultItemStyles.GroupFooterStyle = ''
               Viewport.Width = 417.000000000000000000
               Viewport.Height = 392.000000000000000000
+              object Memo1: TMemo
+                Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+                DataDetectorTypes = []
+                Position.Y = 24.000000000000000000
+                Size.Width = 409.000000000000000000
+                Size.Height = 249.000000000000000000
+                Size.PlatformDefault = False
+                TabOrder = 0
+                Viewport.Width = 405.000000000000000000
+                Viewport.Height = 245.000000000000000000
+              end
             end
           end
         end

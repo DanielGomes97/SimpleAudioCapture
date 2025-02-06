@@ -18,6 +18,7 @@ type
   public
   { Public declarations }
     FileAudio: String;
+    FileOrigin: String;
     FSeconds: Integer;
     FMicrophone  : TAudioCaptureDevice;
     FMediaPlayer : TMediaPlayer;
