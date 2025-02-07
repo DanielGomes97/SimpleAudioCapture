@@ -225,6 +225,17 @@ begin
         //Memo1.Lines.Add(Format('Arquivo: %s, Duração: %s', [AudioInfo.FileName, AudioInfo.Duration]));
 end;
 
+ {
+procedure TFrmViewMain.SpeedButton1Click(Sender: TObject);
+var
+  AudioFiles: TArray<TAudioInfo>;
+  AudioInfo: TAudioInfo;
+begin
+    AudioFiles := ListAudioFiles(AudioCapture.FileAudio);  // Diretório onde os áudios estão salvos
+    for AudioInfo in AudioFiles do // Exibe os arquivos e suas durações
+        Memo1.Lines.Add(Format('Arquivo: %s, Duração: %s', [AudioInfo.FileName, AudioInfo.Duration]));
+end;}
+
 function TFrmViewMain.ListAudioFiles(const Directory: string): TArray<TAudioInfo>;
 var
   Files: TStringDynArray;
