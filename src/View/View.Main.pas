@@ -57,25 +57,38 @@ type
     SpeedButton5: TSpeedButton;
     Layout18: TLayout;
     Rectangle4: TRectangle;
-    Rectangle5: TRectangle;
+    RecBARCurrentAudio: TRectangle;
     Layout19: TLayout;
     SKTimeAudio: TSkLabel;
     SKTimeAudioCurrent: TSkLabel;
-    TimerUpdatedraft: TTimer;
+    TimerUpdateCurrentAudio: TTimer;
     Memo1: TMemo;
+    SKTitle: TSkLabel;
+    FloatAnimationWidthAudio: TFloatAnimation;
     procedure FormCreate(Sender: TObject);
     procedure TimerUpdatesInsecondsTimer(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure BtnRecordingClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure TimerUpdateCurrentAudioTimer(Sender: TObject);
 
   private
+    //
+    MediaPlayerAudio: TMediaPlayer;
+    Files: TStringDynArray;
+    AudioFiles: TArray<TAudioInfo>;
+    AudioInfo: TAudioInfo;
+    //
     procedure Iniciar;
     procedure Parar;
-    procedure ListarAudioFiles(Title, Timer: String);
+    procedure ListarAudioFiles(Title, Timer, CaminhoAudio: String);
     procedure ClickMenuOptionTrash(Sender: TObject);
     procedure ClickMenuOptionPlay(Sender: TObject);
     function  ListAudioFiles(const Directory: string): TArray<TAudioInfo>;
+    procedure ListarDiretorioAudios;
     { Private declarations }
   public
     { Public declarations }
@@ -87,6 +100,10 @@ var
 
 const
    MediaTimeScale: Integer = $989680;
+   TimeDefault: String = '00:00';
+   StartRecording: String = 'Start recording';
+   StopRecording : String = 'Stop Recorder';
+   //ColorRed: TAlphaColor = $
 
 implementation
 
@@ -97,12 +114,12 @@ uses View.Frame.ListAudio;
 procedure TFrmViewMain.Parar;
 begin
     AudioCapture.StopRecording;
-    LblNameButtonStart.Text := 'Start recording';
+    LblNameButtonStart.Text := StartRecording;
     BtnRecording.Fill.Color := $FF166DB4;
     LblStatus.FontColor := $FF794343;
     LblStatus.Text := 'stopped';
     LblOriginPath.Text:= 'Saved in: ' + AudioCapture.FileAudio;
-    LblCount.Text := '00:00';
+    LblCount.Text := TimeDefault;
     TimerUpdatesInseconds.Enabled := False;
     AudioCapture.FSeconds := 0;
 end;
@@ -111,11 +128,11 @@ procedure TFrmViewMain.Iniciar;
 begin
     AudioCapture.StartRecording;
     LblStatus.FontColor := $FF147F44;
-    LblNameButtonStart.Text := 'Stop Recorder';
+    LblNameButtonStart.Text := StopRecording;
     BtnRecording.Fill.Color := $FF794343;
     LblStatus.Text := 'recording audio...';
     LblOriginPath.Text:= 'Saving to: ' + AudioCapture.FileAudio;
-    LblCount.Text := '00:00';
+    LblCount.Text := TimeDefault;
     TimerUpdatesInseconds.Enabled := True;
 end;
 
@@ -146,11 +163,12 @@ end;
 procedure TFrmViewMain.FormCreate(Sender: TObject);
 begin
     AudioCapture    := TAudioCapture.Create;
-    LblNameButtonStart.Text := 'Start recording';
+    LblNameButtonStart.Text := StartRecording;
     BtnRecording.Fill.Color := $FF166DB4;
     AudioCapture.FMicroAtivo := False;
     AudioCapture.FAudioAtivo := False;
-    //ReportMemoryLeaksOnShutdown := True;
+    MediaPlayerAudio := TMediaPlayer.Create(nil); // Inicializa o MediaPlayer
+    ReportMemoryLeaksOnShutdown := True;
 end;
 
 procedure TFrmViewMain.FormDestroy(Sender: TObject);
@@ -164,6 +182,8 @@ begin
     AudioCapture.PermissoesUser.Free;
     AudioCapture.FMediaPlayer.Free;
     AudioCapture.Free;
+    //
+    MediaPlayerAudio.Free;
 end;
 
 procedure TFrmViewMain.TimerUpdatesInsecondsTimer(Sender: TObject);
@@ -172,7 +192,7 @@ begin
     LblCount.Text := Format('%.2d:%.2d', [AudioCapture.FSeconds div 60, AudioCapture.FSeconds mod 60]); // update: time MM:SS
 end;
 
-procedure TFrmViewMain.ListarAudioFiles(Title, Timer: String);
+procedure TFrmViewMain.ListarAudioFiles(Title, Timer, CaminhoAudio: String);
 var
   Item: TListBoxItem;
   Frame: TFrameListAudio;
@@ -185,7 +205,7 @@ begin
     Item.Margins.Bottom := 10;
     Item.Margins.Top    := 0;
     //Item.Tag            := Codigo;
-    //Item.TagString      := Descricao;
+    Item.TagString      := CaminhoAudio;
     Item.Selectable     := False;
     Frame                         := TFrameListAudio.Create(Item); //
     Frame.Parent                  := Item;
@@ -198,48 +218,89 @@ begin
     LstListAudio.AddObject(Item);
 end;
 
-procedure TFrmViewMain.ClickMenuOptionTrash(Sender: TObject);
+procedure TFrmViewMain.ClickMenuOptionTrash(Sender: TObject); //trash
 begin
-    ShowMessage('Trash');
-
+    //ShowMessage('Trash');
 end;
 
-procedure TFrmViewMain.ClickMenuOptionPlay(Sender: TObject);
+procedure TFrmViewMain.ClickMenuOptionPlay(Sender: TObject); //play
+var
+  BtnPlayAudio: TSpeedButton;
 begin
-    ShowMessage('Play');
-    AudioCapture.Play;
+    BtnPlayAudio := Sender As TSpeedButton;
+    ShowMessage(BtnPlayAudio.TagString);
+    exit;
+
+    SKTitle.Text := MediaPlayerAudio.FileName;
+    SKTimeAudio.Text := MediaPlayerAudio.Duration.ToString;
+    SKTimeAudioCurrent.Text := MediaPlayerAudio.CurrentTime.ToString;
+    LytMenuAudio.Visible := True;
+
+    MediaPlayerAudio.Media.Play;
+    RecBARCurrentAudio.Width := 0;
+    TimerUpdateCurrentAudio.Enabled := True;
+    //
 end;
 
 procedure TFrmViewMain.SpeedButton1Click(Sender: TObject);
-var
-  AudioFiles: TArray<TAudioInfo>;
-  AudioInfo: TAudioInfo;
 begin
     Memo1.Visible := False;
     LstListAudio.Items.Clear;
-    //ListAudioFiles('Musica do Dia', '05:30'); ListAudioFiles('Musica da Noite', '04:42');ListAudioFiles('Musica da Tarde', '03:09'); ListAudioFiles('Musica da Madrugada', '10:50');
-
     AudioFiles := ListAudioFiles(AudioCapture.FileAudio);  // Diretório onde os áudios estão salvos
-    for AudioInfo in AudioFiles do // Exibe os arquivos e suas durações
-        ListarAudioFiles(AudioInfo.FileName, Format('%s', [AudioInfo.Duration]));
-        //Memo1.Lines.Add(Format('Arquivo: %s, Duração: %s', [AudioInfo.FileName, AudioInfo.Duration]));
 end;
 
- {
-procedure TFrmViewMain.SpeedButton1Click(Sender: TObject);
-var
-  AudioFiles: TArray<TAudioInfo>;
-  AudioInfo: TAudioInfo;
+procedure TFrmViewMain.TimerUpdateCurrentAudioTimer(Sender: TObject);
 begin
-    AudioFiles := ListAudioFiles(AudioCapture.FileAudio);  // Diretório onde os áudios estão salvos
-    for AudioInfo in AudioFiles do // Exibe os arquivos e suas durações
-        Memo1.Lines.Add(Format('Arquivo: %s, Duração: %s', [AudioInfo.FileName, AudioInfo.Duration]));
-end;}
+    if NOT (MediaPlayerAudio.Media.State = TMediaState.Playing) then
+       begin
+           FloatAnimationWidthAudio.Stop;
+           RecBARCurrentAudio.Width := 0;
+           Exit;
+       end;
+    SKTimeAudioCurrent.Text := MediaPlayerAudio.CurrentTime.ToString;
+    FloatAnimationWidthAudio.StartValue := RecBARCurrentAudio.Width;
+    FloatAnimationWidthAudio.StopValue  := RecBARCurrentAudio.Width + (Rectangle4.Width / (MediaPlayerAudio.Duration div MediaTimeScale));
+    FloatAnimationWidthAudio.Duration   := 1.0;
+    FloatAnimationWidthAudio.Start;
+end;
+
+ procedure TFrmViewMain.SpeedButton2Click(Sender: TObject);
+begin
+    MediaPlayerAudio.Media.Stop;
+    MediaPlayerAudio.CurrentTime := 0;
+    LytMenuAudio.Visible := False;
+    TimerUpdateCurrentAudio.Enabled := False;
+end;
+
+procedure TFrmViewMain.SpeedButton3Click(Sender: TObject);
+begin
+    if (MediaPlayerAudio.Media.State = TMediaState.Playing) then
+       MediaPlayerAudio.Media.Stop;
+    TimerUpdateCurrentAudio.Enabled := False;
+end;
+
+procedure TFrmViewMain.SpeedButton5Click(Sender: TObject);
+begin
+    if NOT(MediaPlayerAudio.Media.State = TMediaState.Playing) then
+       MediaPlayerAudio.Media.Play;
+    TimerUpdateCurrentAudio.Enabled := True;
+end;
+
+procedure TFrmViewMain.ListarDiretorioAudios;
+var
+  Caminho: String;
+begin
+    Caminho := AudioCapture.GetOriginPath;
+
+    {$IFDEF ANDROID}   Files := TDirectory.GetFiles(Directory, '*.mp3'); {$ENDIF}
+    {$IFDEF MSWINDOWS}
+        Files := TDirectory.GetFiles(ExtractFilePath(ParamStr(0)), '*.wav');
+        Files := Files + TDirectory.GetFiles(ExtractFilePath(ParamStr(0)), '*.mp3');
+    {$ENDIF}
+end;
 
 function TFrmViewMain.ListAudioFiles(const Directory: string): TArray<TAudioInfo>;
 var
-  Files: TStringDynArray;
-  MediaPlayer: TMediaPlayer;
   FileName: string;
   AudioInfo: TAudioInfo;
   AudioList: TArray<TAudioInfo>;
@@ -247,36 +308,31 @@ var
   MinCurrent, SecondsCurrent: Integer;
 begin
     // Lista todos os arquivos .mp3 (Android) ou .wav (Windows) no diretório
-    {$IFDEF ANDROID}   Files := TDirectory.GetFiles(Directory, '*.mp3'); {$ENDIF}
-    {$IFDEF MSWINDOWS} Files := TDirectory.GetFiles(ExtractFilePath(ParamStr(0)), '*.wav'); {$ENDIF}
-    MediaPlayer := TMediaPlayer.Create(nil); // Inicializa o MediaPlayer
+    {$IFDEF ANDROID}   Files := TDirectory.GetFiles(AudioCapture.GetOriginPath, '*.mp3'); {$ENDIF}
+    {$IFDEF MSWINDOWS}
+        //Files := TDirectory.GetFiles(ExtractFilePath(ParamStr(0)), '*.wav');
+        //Files := Files + TDirectory.GetFiles(ExtractFilePath(ParamStr(0)), '*.mp3');
+        Files := TDirectory.GetFiles(AudioCapture.GetOriginPath, '*.wav');
+
+        {$ENDIF}
     try
         SetLength(AudioList, 0);
         for FileName in Files do
         begin
-            MediaPlayer.FileName := FileName; // Carrega o arquivo de áudio no MediaPlayer
-            MediaPlayer.CurrentTime := 0; //zerar
-
-            // Verifica se a duração foi carregada corretamente
-            if MediaPlayer.Duration > 0 then
+            MediaPlayerAudio.FileName := FileName; // Carrega o arquivo de áudio no MediaPlayer
+            MediaPlayerAudio.CurrentTime := 0; //zerar
+            if MediaPlayerAudio.Duration > 0 then // Verifica se a duração foi carregada corretamente
             begin
-                //tempo atual
-                {MinCurrent              := MediaPlayer.CurrentTime div MediaTimeScale div 60;
-                SecondsCurrent          := MediaPlayer.CurrentTime div MediaTimeScale mod 60;
-                MediaPlayer.CurrentTime := Format('Current: %d:%.2d',[MinCurrent, SecondsCurrent]);  }
-
-                //tempo restante
-                {RemMins := (MediaPlayer.Duration - MediaPlayer.CurrentTime) div MediaTimeScale div 60;
-                RemSecs := (MediaPlayer.Duration - MediaPlayer.CurrentTime) div MediaTimeScale mod 60;
-                LblTempoAtual.Text := Format('Remaining: %d:%.2d',[RemMins, RemSecs]);  }
-
                 // Converte a duração para minutos e segundos
-                Minutes := MediaPlayer.Duration div MediaTimeScale div 60;
-                Seconds := MediaPlayer.Duration div MediaTimeScale mod 60;
+                Minutes := MediaPlayerAudio.Duration div MediaTimeScale div 60;
+                Seconds := MediaPlayerAudio.Duration div MediaTimeScale mod 60;
 
                 // Preenche a estrutura TAudioInfo
                 AudioInfo.FileName := TPath.GetFileName(FileName);
                 AudioInfo.Duration := Format('%.2d:%.2d', [Minutes, Seconds]);
+
+                //alimentar frame.
+                ListarAudioFiles(AudioInfo.FileName, AudioInfo.Duration, FileName);
 
                 // Adiciona à lista
                 SetLength(AudioList, Length(AudioList) + 1);
@@ -284,7 +340,6 @@ begin
             end;
         end;
     finally
-       MediaPlayer.Free;
     end;
     Result := AudioList;
 end;

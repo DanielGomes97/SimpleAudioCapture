@@ -14,7 +14,6 @@ type
     function HasMicrophone: Boolean;
     function IsMicrophoneRecording: Boolean;
     function StopCapture: Boolean;
-
   public
   { Public declarations }
     FileAudio: String;
@@ -33,6 +32,7 @@ type
     function  CheckMicrophone: Boolean;
     function  CheckPermissionAudio: Boolean;
     procedure ListenAudio(AFileName: string);
+    function GetOriginPath: String;
     procedure Stop;
     procedure Play;
     constructor Create;
@@ -70,6 +70,18 @@ begin
     {$IFDEF ANDROID}
       if not (PermissoesUser.TemPermissao([PermissoesUser.RECORD_AUDIO])) then
          raise Exception.Create('Necessario ter permissão para usar audio.');
+    {$ENDIF}
+end;
+
+function TAudioCapture.GetOriginPath: String;
+begin
+    {$IFDEF ANDROID}
+        Result := TPath.Combine(TPath.GetSharedDownloadsPath, 'CurysGravacao'); //create folder in downloads...
+    {$ENDIF}
+    {$IFDEF IOS}
+        Result := TPath.GetDocumentsPath + PathDelim; {$ENDIF}
+    {$IFDEF MSWINDOWS}
+        Result := ExtractFilePath(ParamStr(0));
     {$ENDIF}
 end;
 

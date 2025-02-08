@@ -277,6 +277,7 @@ object FrmViewMain: TFrmViewMain
               Size.PlatformDefault = False
               StyleLookup = 'cleareditbutton'
               Text = 'SpeedButton2'
+              OnClick = SpeedButton2Click
             end
           end
           object SkLabel1: TSkLabel
@@ -337,6 +338,7 @@ object FrmViewMain: TFrmViewMain
                 Size.PlatformDefault = False
                 StyleLookup = 'pausetoolbutton'
                 Text = 'SpeedButton3'
+                OnClick = SpeedButton3Click
               end
             end
             object Layout17: TLayout
@@ -353,6 +355,7 @@ object FrmViewMain: TFrmViewMain
                 Size.PlatformDefault = False
                 StyleLookup = 'playtoolbutton'
                 Text = 'SpeedButton5'
+                OnClick = SpeedButton5Click
               end
             end
           end
@@ -370,9 +373,23 @@ object FrmViewMain: TFrmViewMain
           object Layout13: TLayout
             Align = Top
             Size.Width = 397.000000000000000000
-            Size.Height = 89.000000000000000000
+            Size.Height = 100.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
+            object SKTitle: TSkLabel
+              Align = Client
+              Size.Width = 397.000000000000000000
+              Size.Height = 100.000000000000000000
+              Size.PlatformDefault = False
+              StyledSettings = [Family, Size]
+              TextSettings.Font.Weight = Bold
+              TextSettings.FontColor = xFF092281
+              TextSettings.HorzAlign = Center
+              Words = <
+                item
+                  Text = 'SKTitle'
+                end>
+            end
           end
           object Layout18: TLayout
             Align = Bottom
@@ -390,7 +407,7 @@ object FrmViewMain: TFrmViewMain
               Stroke.Kind = None
               XRadius = 5.000000000000000000
               YRadius = 5.000000000000000000
-              object Rectangle5: TRectangle
+              object RecBARCurrentAudio: TRectangle
                 Align = Left
                 Fill.Color = xFF2270EF
                 Size.Width = 113.000000000000000000
@@ -399,6 +416,12 @@ object FrmViewMain: TFrmViewMain
                 Stroke.Kind = None
                 XRadius = 5.000000000000000000
                 YRadius = 5.000000000000000000
+                object FloatAnimationWidthAudio: TFloatAnimation
+                  Duration = 0.200000002980232200
+                  PropertyName = 'Width'
+                  StartValue = 0.000000000000000000
+                  StopValue = 0.000000000000000000
+                end
               end
             end
             object Layout19: TLayout
@@ -436,7 +459,9 @@ object FrmViewMain: TFrmViewMain
       end
     end
   end
-  object TimerUpdatedraft: TTimer
+  object TimerUpdateCurrentAudio: TTimer
+    Enabled = False
+    OnTimer = TimerUpdateCurrentAudioTimer
     Left = 208
     Top = 376
   end
