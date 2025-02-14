@@ -1,8 +1,10 @@
-unit Model.AudioCapture;
+unit Recorder.Model.AudioCapture;
 
 interface
 uses
-   System.DateUtils, System.SysUtils, FMX.Media, System.IOUtils, Model.PermissionsUser;
+   System.DateUtils, System.SysUtils, FMX.Media, System.IOUtils,
+   //
+   Recorder.Model.PermissionsUser;
 
 type
    TAudioCapture = class
@@ -32,7 +34,7 @@ type
     function  CheckMicrophone: Boolean;
     function  CheckPermissionAudio: Boolean;
     procedure ListenAudio(AFileName: string);
-    function GetOriginPath: String;
+    function  GetOriginPath: String;
     procedure Stop;
     procedure Play;
     constructor Create;
@@ -68,15 +70,15 @@ function TAudioCapture.CheckPermissionAudio: Boolean;
 begin
     Result := True;
     {$IFDEF ANDROID}
-      if not (PermissoesUser.TemPermissao([PermissoesUser.RECORD_AUDIO])) then
-         raise Exception.Create('Necessario ter permissão para usar audio.');
+      //if not (PermissoesUser.TemPermissao([PermissoesUser.RECORD_AUDIO])) then
+      //   raise Exception.Create('Necessario ter permissão para usar audio.');
     {$ENDIF}
 end;
 
 function TAudioCapture.GetOriginPath: String;
 begin
     {$IFDEF ANDROID}
-        Result := TPath.Combine(TPath.GetSharedDownloadsPath, 'CurysGravacao'); //create folder in downloads...
+        Result := TPath.Combine(TPath.GetSharedDownloadsPath, 'Click'); //create folder in downloads...
     {$ENDIF}
     {$IFDEF IOS}
         Result := TPath.GetDocumentsPath + PathDelim; {$ENDIF}
@@ -89,7 +91,7 @@ function TAudioCapture.GetAudioFileName(const AFileName: string): string;
 begin
     {$IFDEF ANDROID}
         var SubPasta: String;
-        SubPasta := TPath.Combine(TPath.GetSharedDownloadsPath, 'CurysGravacao'); //create folder in downloads...
+        SubPasta := TPath.Combine(TPath.GetSharedDownloadsPath, 'Click'); //create folder in downloads...
             if not TDirectory.Exists(SubPasta) then
                TDirectory.CreateDirectory(SubPasta);
         Result := TPath.Combine(SubPasta, AFileName);

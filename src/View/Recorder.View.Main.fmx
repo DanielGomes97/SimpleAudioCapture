@@ -10,12 +10,12 @@ object FrmViewMain: TFrmViewMain
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  DesignerMasterStyle = 0
+  DesignerMasterStyle = 3
   object TimerUpdatesInseconds: TTimer
     Enabled = False
     OnTimer = TimerUpdatesInsecondsTimer
-    Left = 120
-    Top = 316
+    Left = 416
+    Top = 84
   end
   object Layout1: TLayout
     Align = Client
@@ -219,8 +219,9 @@ object FrmViewMain: TFrmViewMain
                 Size.Height = 249.000000000000000000
                 Size.PlatformDefault = False
                 TabOrder = 0
-                Viewport.Width = 405.000000000000000000
-                Viewport.Height = 245.000000000000000000
+                Visible = False
+                Viewport.Width = 401.000000000000000000
+                Viewport.Height = 241.000000000000000000
               end
             end
           end
@@ -236,7 +237,7 @@ object FrmViewMain: TFrmViewMain
       TabOrder = 1
       object Rectangle1: TRectangle
         Align = Client
-        Fill.Color = claBlack
+        Fill.Color = xFF363636
         Opacity = 0.500000000000000000
         Size.Width = 437.000000000000000000
         Size.Height = 777.000000000000000000
@@ -272,8 +273,8 @@ object FrmViewMain: TFrmViewMain
             TabOrder = 0
             object SpeedButton2: TSpeedButton
               Align = Client
-              Size.Width = 50.000000000000000000
-              Size.Height = 50.000000000000000000
+              Size.Width = 32.000000000000000000
+              Size.Height = 30.000000000000000000
               Size.PlatformDefault = False
               StyleLookup = 'cleareditbutton'
               Text = 'SpeedButton2'
@@ -318,8 +319,8 @@ object FrmViewMain: TFrmViewMain
               TabOrder = 0
               object SpeedButton4: TSpeedButton
                 Align = Client
-                Size.Width = 130.000000000000000000
-                Size.Height = 50.000000000000000000
+                Size.Width = 48.000000000000000000
+                Size.Height = 48.000000000000000000
                 Size.PlatformDefault = False
                 StyleLookup = 'actiontoolbutton'
                 Text = 'SpeedButton4'
@@ -333,8 +334,8 @@ object FrmViewMain: TFrmViewMain
               TabOrder = 1
               object SpeedButton3: TSpeedButton
                 Align = Client
-                Size.Width = 137.000000000000000000
-                Size.Height = 50.000000000000000000
+                Size.Width = 48.000000000000000000
+                Size.Height = 48.000000000000000000
                 Size.PlatformDefault = False
                 StyleLookup = 'pausetoolbutton'
                 Text = 'SpeedButton3'
@@ -350,8 +351,8 @@ object FrmViewMain: TFrmViewMain
               TabOrder = 2
               object SpeedButton5: TSpeedButton
                 Align = Client
-                Size.Width = 130.000000000000000000
-                Size.Height = 50.000000000000000000
+                Size.Width = 48.000000000000000000
+                Size.Height = 48.000000000000000000
                 Size.PlatformDefault = False
                 StyleLookup = 'playtoolbutton'
                 Text = 'SpeedButton5'
@@ -433,8 +434,8 @@ object FrmViewMain: TFrmViewMain
               TabOrder = 1
               object SKTimeAudio: TSkLabel
                 Align = Right
-                Position.X = 314.540008544921900000
-                Size.Width = 82.459999084472660000
+                Position.X = 311.899993896484400000
+                Size.Width = 85.099998474121090000
                 Size.Height = 30.000000000000000000
                 Size.PlatformDefault = False
                 Words = <
@@ -445,7 +446,7 @@ object FrmViewMain: TFrmViewMain
               object SKTimeAudioCurrent: TSkLabel
                 Align = Client
                 Margins.Right = 10.000000000000000000
-                Size.Width = 304.540008544921900000
+                Size.Width = 301.899993896484400000
                 Size.Height = 30.000000000000000000
                 Size.PlatformDefault = False
                 Words = <
@@ -458,11 +459,33 @@ object FrmViewMain: TFrmViewMain
         end
       end
     end
+    inline FrameMensagem1: TFrameMensagem
+      Align = Contents
+      Size.Width = 437.000000000000000000
+      Size.Height = 777.000000000000000000
+      Size.PlatformDefault = False
+      Visible = False
+      inherited Rectangle6: TRectangle
+        inherited Layout20: TLayout
+          inherited Layout21: TLayout
+            inherited BtnFecharPermissao: TSpeedButton
+              Size.Width = 32.000000000000000000
+              Size.Height = 30.000000000000000000
+            end
+          end
+        end
+        inherited Layout22: TLayout
+          inherited BtnPermitirAcesso: TRectangle
+            OnClick = FrameMensagem1BtnPermitirAcessoClick
+          end
+        end
+      end
+    end
   end
   object TimerUpdateCurrentAudio: TTimer
     Enabled = False
     OnTimer = TimerUpdateCurrentAudioTimer
-    Left = 208
-    Top = 376
+    Left = 352
+    Top = 72
   end
 end

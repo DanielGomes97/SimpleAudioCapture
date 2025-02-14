@@ -1,0 +1,206 @@
+object FrameMensagem: TFrameMensagem
+  Align = Contents
+  Size.Width = 437.000000000000000000
+  Size.Height = 777.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle5: TRectangle
+    Align = Client
+    Fill.Color = xFF363636
+    Opacity = 0.500000000000000000
+    Size.Width = 437.000000000000000000
+    Size.Height = 777.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Rectangle6: TRectangle
+    Align = Center
+    Fill.Color = claWhite
+    Size.Width = 377.000000000000000000
+    Size.Height = 283.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    XRadius = 10.000000000000000000
+    YRadius = 10.000000000000000000
+    object Layout20: TLayout
+      Align = Top
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 357.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object Layout21: TLayout
+        Align = Right
+        Position.X = 307.000000000000000000
+        TabOrder = 1
+        object BtnFecharPermissao: TSpeedButton
+          Align = Client
+          StyledSettings = [Family, Size, Style]
+          Size.Width = 50.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'cleareditbutton'
+          Text = 'SpeedButton2'
+          TextSettings.FontColor = xFF0A2CAB
+          OnClick = BtnFecharPermissaoClick
+        end
+      end
+      object SKLblTitulo: TSkLabel
+        Align = Client
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 247.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family]
+        TextSettings.Font.Weight = Bold
+        TextSettings.FontColor = xFF0A2CAB
+        TextSettings.HorzAlign = Center
+        Words = <
+          item
+            Text = 'Precisamos de sua permiss'#227'o'
+          end>
+      end
+      object Layout8: TLayout
+        Align = Left
+        TabOrder = 0
+        object SkSvg1: TSkSvg
+          Align = Client
+          Margins.Left = 10.000000000000000000
+          Margins.Top = 10.000000000000000000
+          Margins.Right = 10.000000000000000000
+          Margins.Bottom = 10.000000000000000000
+          Opacity = 0.699999988079071000
+          Size.Width = 30.000000000000000000
+          Size.Height = 30.000000000000000000
+          Size.PlatformDefault = False
+          Svg.OverrideColor = xFF0A2CAB
+          Svg.Source = 
+            '<?xml version='#39'1.0'#39' encoding='#39'utf-8'#39'?>'#13#10'<!DOCTYPE svg PUBLIC '#39'-/' +
+            '/W3C//DTD SVG 1.1//EN'#39' '#39'http://www.w3.org/Graphics/SVG/1.1/DTD/s' +
+            'vg11.dtd'#39'>'#13#10'<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generat' +
+            'or: SVG Repo Mixer Tools -->'#13#10'<svg fill="#000000" height="800px"' +
+            ' width="800px" version="1.1" xmlns="http://www.w3.org/2000/svg" ' +
+            'viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink"' +
+            ' enable-background="new 0 0 512 512">'#13#10'  <g>'#13#10'    <g>'#13#10'      <pa' +
+            'th d="m439.5,236c0-11.3-9.1-20.4-20.4-20.4s-20.4,9.1-20.4,20.4c0' +
+            ',70-64,126.9-142.7,126.9-78.7,0-142.7-56.9-142.7-126.9 0-11.3-9.' +
+            '1-20.4-20.4-20.4s-20.4,9.1-20.4,20.4c0,86.2 71.5,157.4 163.1,166' +
+            '.7v57.5h-23.6c-11.3,0-20.4,9.1-20.4,20.4 0,11.3 9.1,20.4 20.4,20' +
+            '.4h88c11.3,0 20.4-9.1 20.4-20.4 0-11.3-9.1-20.4-20.4-20.4h-23.6v' +
+            '-57.5c91.6-9.3 163.1-80.5 163.1-166.7z"/>'#13#10'      <path d="m256,3' +
+            '23.5c51,0 92.3-41.3 92.3-92.3v-127.9c0-51-41.3-92.3-92.3-92.3s-9' +
+            '2.3,41.3-92.3,92.3v127.9c0,51 41.3,92.3 92.3,92.3zm-52.3-220.2c0' +
+            '-28.8 23.5-52.3 52.3-52.3s52.3,23.5 52.3,52.3v127.9c0,28.8-23.5,' +
+            '52.3-52.3,52.3s-52.3-23.5-52.3-52.3v-127.9z"/>'#13#10'    </g>'#13#10'  </g>' +
+            #13#10'</svg>'
+        end
+      end
+    end
+    object Layout22: TLayout
+      Align = Bottom
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 213.000000000000000000
+      Size.Width = 357.000000000000000000
+      Size.Height = 60.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object BtnNegarAcesso: TRectangle
+        Align = Left
+        Fill.Color = xFF676767
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 161.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 10.000000000000000000
+        YRadius = 10.000000000000000000
+        OnClick = BtnNegarAcessoClick
+        object SkLabel3: TSkLabel
+          Align = Client
+          Locked = True
+          Size.Width = 161.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Words = <
+            item
+              Text = 'Agora n'#227'o'
+            end>
+        end
+      end
+      object BtnPermitirAcesso: TRectangle
+        Align = Client
+        Cursor = crHandPoint
+        Fill.Color = xFF0A2CAB
+        Margins.Top = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 186.000000000000000000
+        Size.Height = 50.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Kind = None
+        XRadius = 10.000000000000000000
+        YRadius = 10.000000000000000000
+        OnClick = BtnPermitirAcessoClick
+        object SkLabel2: TSkLabel
+          Align = Client
+          Locked = True
+          Size.Width = 186.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+          StyledSettings = [Family, Style]
+          TextSettings.Font.Size = 16.000000000000000000
+          TextSettings.FontColor = claWhite
+          TextSettings.HorzAlign = Center
+          Words = <
+            item
+              Text = 'Permitir Acesso'
+            end>
+        end
+      end
+    end
+    object Layout27: TLayout
+      Align = Client
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Size.Width = 357.000000000000000000
+      Size.Height = 143.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object SkLblMensagem: TSkLabel
+        Align = Client
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Size.Width = 347.000000000000000000
+        Size.Height = 133.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Family]
+        TextSettings.Font.Size = 16.000000000000000000
+        TextSettings.Font.Weight = Bold
+        TextSettings.FontColor = xFF092281
+        TextSettings.HorzAlign = Center
+        Words = <
+          item
+            Text = 'SKTitle'
+          end>
+      end
+    end
+  end
+end
